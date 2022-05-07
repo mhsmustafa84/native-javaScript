@@ -1,0 +1,405 @@
+
+
+// Changes In NavBar When Scroll //
+const tiTle = document.getElementById("title"),
+    headEr = document.querySelector("header");
+window.addEventListener("scroll", () => {
+    if (scrollY > 0) {
+        tiTle.setAttribute("style", "font-size: 50px;");
+        forwardMenu.setAttribute(
+            "style",
+            "width: 40px; height: 40px; top: 15px;"
+        );
+        headEr.setAttribute("style", "background-color: rgba(0, 0, 0,.5)");
+    } else {
+        tiTle.removeAttribute("style");
+        forwardMenu.removeAttribute("style");
+        headEr.removeAttribute("style");
+    }
+});
+
+// Show And Hide Side Menu //
+const forwardMenu = document.getElementById("forward-menu"),
+    backMenu = document.getElementById("back-menu"),
+    uL = document.querySelectorAll("#u-l li");
+forwardMenu.onclick = function () {
+    document.body.style.overflow = "hidden";
+    navMenu.style.display = "flex";
+};
+backMenu.onclick = function () {
+    navMenu.style.display = "none";
+    document.body.style.overflow = "initial";
+};
+for (let i = 0; i < uL.length; i++) {
+    uL[i].onclick = () => {
+        navMenu.style.display = "none";
+        document.body.style.overflow = "initial";
+    };
+}
+
+
+
+
+
+
+
+//Hide Placeholder On Input Focus//
+const inPut = document.querySelectorAll(".place-hold");
+for (let i = 0; i < inPut.length; i++) {
+    inPut[i].onfocus = function () {
+        this.placeholder = "";
+    };
+    inPut[i].onblur = function () {
+        this.placeholder = this.getAttribute("data-placehold");
+    };
+}
+
+// Calculate Textarea Characters With On-Input Event//
+const txtArea = document.getElementById("text-area"),
+    leftChar = document.getElementById("left-char");
+txtArea.oninput = function () {
+    leftChar.textContent = 50 - this.value.length;
+};
+
+
+
+
+
+// Type Writer Effect //
+const oldText = document.getElementById("old-text"),
+    startEffectButton = document.getElementById("strat-effect-button"),
+    newText = document.getElementById("new-text");
+    
+startEffectButton.onclick = () => {
+    newText.textContent = "";
+    const oldTextContent = oldText.textContent;
+    let i = 0,
+        typeWriter = setInterval(() => {
+            newText.textContent += oldTextContent[i];
+            i++;
+            startEffectButton.disabled = true;
+            if (i > oldTextContent.length - 1) {
+                clearInterval(typeWriter);
+                startEffectButton.disabled = false;
+            }
+        }, 200);
+};
+
+// Capitalize First Letter //
+// const inputText = document.getElementById("sm-letters"),
+//     changeButton = document.getElementById("change-button"),
+//     capLetters = document.getElementById("cap-letters"),
+//     plHol = inputText.placeholder;
+// inputText.onfocus = function () {
+//     this.placeholder = "";
+// };
+// inputText.onblur = function () {
+//     this.placeholder = plHol;
+// };
+// changeButton.onclick = function () {
+//     const oldArr = inputText.value.split(" ");
+//     const newArr = [];
+//     for (let i = 0; i < oldArr.length; i++) {
+//         newArr.push(oldArr[i].charAt(0).toUpperCase() + oldArr[i].slice(1));
+//     }
+//     capLetters.textContent = newArr.join(" ");
+//     capLetters.style.visibility = "visible";
+
+    // another code //
+    /*
+    const smLetters = inputText.value.split(" ");
+    capLetters.textContent = "";
+    smLetters.forEach(function (item) {
+        if (inputText.value == "" || item[0] == item[0].toUpperCase()) {
+            capLetters.textContent =
+                "please enter a text all of letters small like that";
+        } else {
+            let newLetters = "";
+            for (let i = 0; i < item.length; i++) {
+                if (i == 0) {
+                    newLetters += item[i].toUpperCase();
+                } else {
+                    newLetters += item[i];
+    //             }
+            }
+            capLetters.textContent += " " + newLetters;
+        }
+    });
+    */
+// };
+// inputText.oninput = function () {
+//     if (inputText.value == "") {
+//         capLetters.style.visibility = "hidden";
+//     }
+// };
+
+// Transform All Letters //
+// const inpt = document.getElementById("inpt"),
+//     capitalBtn = document.getElementById("capital-btn"),
+//     smallBtn = document.getElementById("small-btn"),
+//     transLetters = document.getElementById("trans-letters"),
+//     placeH = inpt.placeholder;
+// inpt.onfocus = function () {
+//     this.placeholder = "";
+// };
+// inpt.onblur = function () {
+//     this.placeholder = placeH;
+// };
+// capitalBtn.onclick = () => {
+//     if (inpt.value == "" || inpt.value == "0-9") {
+//         transLetters.textContent = "Enter Text Only";
+//     } else {
+//         transLetters.textContent = inpt.value.toUpperCase();
+//         transLetters.style.visibility = "visible";
+//         capitalBtn.style.visibility = "hidden";
+//         smallBtn.style.visibility = "visible";
+//     }
+// };
+// smallBtn.onclick = () => {
+//     if (inpt.value == "" || inpt.value == "0-9") {
+//         transLetters.textContent = "Enter Text Only";
+//     } else {
+//         transLetters.textContent = inpt.value.toLowerCase();
+//         transLetters.style.visibility = "visible";
+//         smallBtn.style.visibility = "hidden";
+//         capitalBtn.style.visibility = "visible";
+//     }
+// };
+// inpt.oninput = () => {
+//     if (inpt.value == "") {
+//         transLetters.style.visibility = "hidden";
+//         capitalBtn.style.visibility = "visible";
+//         smallBtn.style.visibility = "visible";
+//     }
+// };
+
+
+
+// Change Website Colors //
+// const liColor = document.querySelectorAll(".color-switch li"),
+//     head = document.getElementById("Heading"),
+//     para = document.getElementById("Paragraph"),
+//     locStoItem = localStorage.getItem("color");
+// head.style.backgroundColor = locStoItem;
+// para.style.color = locStoItem;
+// for (let i = 0; i < liColor.length; i++) {
+//     liColor[i].addEventListener("click", function () {
+//         const dataColor = this.getAttribute("data-color");
+//         head.style.backgroundColor = dataColor;
+//         para.style.color = dataColor;
+//         localStorage.setItem("color", dataColor);
+//     });
+// }
+
+// Dynamic Clock //
+// window.onload = () => {
+//     setInterval(() => {
+//         const clock = document.getElementById("clock"),
+//             now = new Date();
+//         let hours = now.getHours(),
+//             minutes = now.getMinutes(),
+//             seconds = now.getSeconds();
+//         if (hours > 12) {
+//             hours = hours - 12;
+//             if (seconds < 10) {
+//                 seconds = "0" + seconds + " PM";
+//             } else {
+//                 seconds = seconds + " PM";
+//             }
+//         } else {
+//             if (seconds < 10) {
+//                 seconds = "0" + seconds + " AM";
+//             } else {
+//                 seconds = seconds + " AM";
+//             }
+//         }
+//         if (hours == 0) {
+//             hours = "12";
+//         }
+//         if (hours < 10) {
+//             hours = "0" + hours;
+//         }
+//         if (minutes < 10) {
+//             minutes = "0" + minutes;
+//         }
+//         clock.textContent = hours + ":" + minutes + ":" + seconds;
+//     }, 1000);
+// };
+
+// Convert From Dollar To Pound //
+// const usdInput = document.getElementById("usd-input"),
+//     reuslt = document.getElementById("conv-result"),
+//     pHold = usdInput.placeholder;
+// usdInput.onfocus = function () {
+//     this.placeholder = "";
+//     reuslt.textContent = "Converted Value Appear Here";
+//     reuslt.style.borderColor = "yellow";
+//     reuslt.style.visibility = "visible";
+// };
+// usdInput.onblur = function () {
+//     if (usdInput.value == "") {
+//         this.placeholder = pHold;
+//         reuslt.style.visibility = "hidden";
+//     }
+// };
+// usdInput.oninput = () => {
+//     reuslt.style.visibility = "visible";
+//     reuslt.style.borderColor = "red";
+//     if (usdInput.value == "") {
+//         reuslt.textContent = "Please Enter A Value To Convet";
+//     } else if (usdInput.value == "0") {
+//         reuslt.textContent = "Value Can Not Be Zero";
+//     } else if (usdInput.value < "0") {
+//         reuslt.textContent = "Please Enter A Positive Value To Convet";
+//     } else if (isNaN(usdInput.value)) {
+//         reuslt.textContent = "Please Enter A Number Value To Convet";
+//     } else {
+//         reuslt.textContent = usdInput.value * 15.57;
+//         reuslt.style.borderColor = "green";
+//     }
+// };
+
+// Mass Generate Random PassWord //
+// const passResultEl = document.getElementById("pass-result"),
+//     clipBoardBtn = document.getElementById("clipboard"),
+//     passLengthEl = document.getElementById("pass-length"),
+//     uppLettersEl = document.getElementById("upp-letters"),
+//     lowLettersEl = document.getElementById("low-letters"),
+//     numbersEl = document.getElementById("numbers"),
+//     symBolsEl = document.getElementById("symbols"),
+//     passGenerateBtn = document.getElementById("pass-genrate");
+// const randomFunc = {
+//     upper: getRandomUpper,
+//     lower: getRandomLower,
+//     number: getRandomNumber,
+//     symbol: getRandomSymbol,
+// };
+// passGenerateBtn.addEventListener("click", () => {
+//     clipBoardBtn.style.visibility = "visible";
+//     clipBoardBtn.textContent = "Copy";
+//     const lengthVal = +passLengthEl.value;
+//     const hasUpper = uppLettersEl.checked;
+//     const hasLower = lowLettersEl.checked;
+//     const hasNumber = numbersEl.checked;
+//     const hasSymbol = symBolsEl.checked;
+//     passResultEl.textContent = genratePass(
+//         hasUpper,
+//         hasLower,
+//         hasNumber,
+//         hasSymbol,
+//         lengthVal
+//     );
+// });
+
+// clipBoardBtn.addEventListener("click", () => {
+//     const textArea = document.createElement("textarea");
+//     const passWordd = passResultEl.textContent;
+//     if (!passWordd) {
+//         return;
+//     }
+//     textArea.value = passWordd;
+//     document.body.appendChild(textArea);
+//     textArea.select();
+//     document.execCommand("copy");
+//     textArea.remove();
+//     clipBoardBtn.textContent = "Copied";
+//     setTimeout(function () {
+//         clipBoardBtn.style.visibility = "hidden";
+//     }, 1500);
+// });
+// function genratePass(upper, lower, number, symbol, lengthVal) {
+//     let generatedPassword = "";
+//     const typesCount = upper + lower + number + symbol;
+//     const typesArr = [{ upper }, { lower }, { number }, { symbol }].filter(
+//         (item) => Object.values(item)[0]
+//     );
+//     if (typesCount === 0) {
+//         return "";
+//     }
+//     for (let i = 0; i < lengthVal; i += typesCount) {
+//         typesArr.forEach((type) => {
+//             const funcName = Object.keys(type)[0];
+//             generatedPassword += randomFunc[funcName]();
+//         });
+//     }
+//     const finalPassword = generatedPassword.slice(0, lengthVal);
+//     return finalPassword;
+// }
+// function getRandomUpper() {
+//     return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+// }
+// function getRandomLower() {
+//     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+// }
+// function getRandomNumber() {
+//     return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+// }
+// function getRandomSymbol() {
+//     const symbols = "_<@#>[&*$]{?-%}(^!=)./";
+//     return symbols[Math.floor(Math.random() * symbols.length)];
+// }
+
+
+
+// Text Practice //
+// const txtEl = document.getElementById("txt"),
+//     charNumEl = document.getElementById("char-num"),
+//     firstWordEl = document.getElementById("first-word"),
+//     lastWordEl = document.getElementById("last-word"),
+//     wordsNumEl = document.getElementById("words-num"),
+//     shortWordEl = document.getElementById("short-word"),
+//     longWordEl = document.getElementById("long-word");
+// txtEl.addEventListener("input", function () {
+//     let txtValArr = txtEl.value.split(" ");
+//     let charNum = 0;
+//     let longWord = 0;
+//     let shortWord = txtEl.value.length;
+//     let lastWordSpace = 1;
+//     let wordsNumSpace = 0;
+//     for (let i = 0; i < txtValArr.length; i++) {
+//         charNum += txtValArr[i].length;
+//         if (txtValArr[i].length >= longWord) {
+//             longWord = txtValArr[i].length;
+//             longWordEl.textContent = txtValArr[i];
+//         }
+//         if (txtValArr[i] != "") {
+//             firstWordEl.textContent = txtValArr[0];
+//             lastWordEl.textContent = txtValArr[txtValArr.length - 1];
+//             wordsNumEl.textContent = txtValArr.length;
+//             if (txtValArr[i].length <= shortWord) {
+//                 shortWord = txtValArr[i].length;
+//                 shortWordEl.textContent = txtValArr[i];
+//             }
+//         } else {
+//             lastWordSpace++;
+//             wordsNumSpace++;
+//             lastWordEl.textContent =
+//                 txtValArr[txtValArr.length - lastWordSpace];
+//             wordsNumEl.textContent = txtValArr.length - wordsNumSpace;
+//         }
+//     }
+//     charNumEl.textContent = charNum;
+//     if (txtEl.value.length == 0) {
+//         shortWordEl.textContent = "";
+//         firstWordEl.textContent = "";
+//     }
+//     console.log(txtValArr[txtValArr.length - 1]);
+// });
+
+
+
+// Scroll To Top Button //
+// var scrollTopBtn = document.getElementById("scroll-top");
+// window.onscroll = () => {
+//     if (scrollY > 500) {
+//         scrollTopBtn.style.display = "block";
+//     } else {
+//         scrollTopBtn.style.display = "none";
+//     }
+// };
+// scrollTopBtn.onclick = function () {
+//     // window.scrollTo(0, 0);
+//     document.body.scrollIntoView({ behavior: "smooth" });
+// };
+
+

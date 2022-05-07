@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+body {
+    background-color: #6c757d;
+}
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+#countdown {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+#countdown h1 {
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: darkred;
+}
+#counter-down {
+    padding: 100px;
+    font-size: 55px;
+    border-radius: 15px;
+    background-color: #343a40;
+    color: white;
+}

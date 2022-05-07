@@ -1,0 +1,47 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+section {
+    position: relative;
+}
+section .slide {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    
+}
+section .slide:first-child {
+    display: block;
+}
+section .slide img {
+    width: 100%;
+    height: 100%;
+}
+.cont-btns {
+    text-align: center;
+     
+     
+}
+.cont-btns button {
+    font-size: 30px;
+     
+}
+#next, #previous {
+    z-index: 99;
+    outline: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#next {
+    position: absolute;
+    top: 250px;
+    right: 10px;
+}
+#previous {
+    position: absolute;
+    top: 250px;
+    left: 15px;
+}
